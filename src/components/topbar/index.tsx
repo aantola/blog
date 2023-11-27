@@ -12,31 +12,30 @@ export default function Topbar(){
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { tokenExists } = useContext(AccountContext)
+    
 
     return (
-        <AppBar  >
-            <span style={{justifyContent: "space-between", display: "flex"}}>
-                <span>
+        <AppBar position="fixed"  >
+            <span style={{justifyContent: "space-between", alignItems: "center", display: "flex"}}>
+                <span style={{padding:"1rem"}}>
                     <Link to="/">
                         <HomeIcon />
-                    </Link>
-                    
+                    </Link>          
                 </span>
-                
-                
-                <span >
-                    {
-                    tokenExists
-                        ? <h1> Logout </h1>
-                        : <GoogleLogin />   
-                    }
-                    <Link to="/about">About me</Link>
-                    
-                    
+                <span style={{justifyContent: "space-between", alignItems: "center", display: "flex"}}>
+                    <span style={{ marginRight: "1rem"}}>
+
+                        {
+                        tokenExists
+                            ? <h1> Logout </h1>
+                            : <GoogleLogin />   
+                        }
+                    </span>
+                    <span style={{ marginRight: "1rem"}}>
+                        <Link to="/about">About me</Link>
+                    </span>
                 </span>
             </span>
-            
-            
         </AppBar>
     )
 }
