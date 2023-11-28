@@ -12,7 +12,7 @@ function App() {
       <AccountProvider>    
         
         <Topbar />
-        <div style={{marginBottom: "5rem"}} />
+
         <Routes>
           <Route path='/' element={<> Blog goes here </>} />
           <Route path='/about' element={<About/>}/>
