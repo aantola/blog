@@ -12,12 +12,12 @@ function App() {
       <AccountProvider>    
         
         <Topbar />
-
-        <Routes>
-          <Route path='/' element={<> Blog goes here </>} />
-          <Route path='/about' element={<About/>}/>
-        </Routes>
-        
+        <body className='mainContainer'> 
+          <Routes>
+            <Route path='/' element={<> Blog goes here </>} />
+            <Route path='/about' element={<About/>}/>
+          </Routes>
+        </body>
       </AccountProvider>
     </BrowserRouter>
     
