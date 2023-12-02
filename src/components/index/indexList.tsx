@@ -12,6 +12,16 @@ export default function IndexList(){
         {
             text: "CTF",
             icon: "Interests",
+
+        },
+        {
+            text: "First blog",
+            icon: "Interests",
+
+        },
+        {
+            text: "VJW0RM malware analysis",
+            icon: "Interests",
         }
 
     ]
@@ -24,7 +34,6 @@ export default function IndexList(){
                         <ListItemButton>
                             <ListItemIcon>
                                 <DynamicIcon iconName={e.icon as IconNames} />
-
                             </ListItemIcon>
                             <ListItemText primary={e.text} />
                         </ListItemButton>
