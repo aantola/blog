@@ -12,13 +12,13 @@ function App() {
     <BrowserRouter> 
       <AccountProvider>    
         <Topbar />
-        <body className='mainContainer'> 
+        <div className='mainContainer'> 
           <Routes>
             <Route path='/' element={<> Blog goes here </>} />
             <Route path='/about' element={<About/>}/>
             <Route path='/blog' element={<BlogPost />} />
           </Routes>
-        </body>
+        </div>
       </AccountProvider>
     </BrowserRouter>
     
