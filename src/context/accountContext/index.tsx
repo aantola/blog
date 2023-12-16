@@ -18,14 +18,28 @@ const AccountContext = createContext<accountContextType>({
 });
 
 
-
 const AccountProvider : React.FC<AccountProviderProps> = ({children}) => {
     
     const [tokenExists,setTokenExists] = useState(localStorage.getItem('token') != null) 
 
-    const login = (token : string) => {
-        setTokenExists(true)
-        localStorage.setItem('token', token);
+    const login = async (token : string) => {
+        // Login code
+        await fetch(process.env.REACT_APP_BACKEND_URL+ "auth/verifytoken/"+token,{
+            method: 'POST',
+        }).then((res : Response) => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            res.json().then((data : any) => {
+                console.log(data)
+            })  
+
+        
+        
+        }).catch((e : Error) => {
+            console.error("Authentification error: " + e.message)
+        })
+        
+        //setTokenExists(true)
+        //localStorage.setItem('token', token);
     }
 
     const logout = () => {

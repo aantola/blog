@@ -18,12 +18,17 @@ export default function Login(){
 
     function onSuccess(){
         google.accounts.id.initialize({
-            client_id: "984618116840-i3h14c0kbuk21els2edo7tapjupo87kd.apps.googleusercontent.com",
+            client_id: process.env.REACT_APP_GOOGLE_CLIEND_ID,
             callback: handleCredentialResponse
             });
         google.accounts.id.renderButton(
-        document.getElementById("buttonDiv"),
-        { theme: "outline", size: "large" }  // customization attributes
+            document.getElementById("buttonDiv"),{ 
+                // theme: "filled_blue",
+                size: "medium", 
+                text: "signin_with",
+                shape: "pill",
+                type: "standar",
+            }  // customization attributes
         );
     }
     function onError(e : Event | string){
