@@ -28,18 +28,20 @@ export default function Topbar(){
 
     return (
         <>
-            <AppBar position="fixed" style={{zIndex: 1400 }}  >
+            <AppBar position="fixed" style={{zIndex: 1400, backgroundColor: "buttonface",  }}  >
                 <span style={{justifyContent: "space-between", alignItems: "center", display: "flex"}}>
                     <span style={{padding:"1rem"}}>
                         <button onClick={openDrawer}>
-                            <MenuIcon />
+                            <MenuIcon >
+                                Index
+                            </MenuIcon>
                         </button>
                                
                     </span>
                     <span style={{justifyContent: "space-between", alignItems: "center", display: "flex"}}>
                         <span style={{ marginRight: "1rem"}}>
                             <Link to="/">
-                                <button> <HomeIcon /> </button>
+                                <button> <HomeIcon /> Home </button>
                             </Link>   
                         </span>
                         <span style={{ marginRight: "1rem"}}>
