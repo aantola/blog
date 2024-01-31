@@ -24,8 +24,13 @@ const AccountProvider : React.FC<AccountProviderProps> = ({children}) => {
 
     const login = async (token : string) => {
         // Login code
-        await fetch(process.env.REACT_APP_BACKEND_URL+ "auth/verifytoken/"+token,{
+        await fetch(process.env.REACT_APP_BACKEND_URL+ "user/login",{
             method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify({token})
         }).then((res : Response) => {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             res.json().then((data : any) => {
