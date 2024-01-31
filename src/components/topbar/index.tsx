@@ -4,19 +4,20 @@ import Toolbar from "@mui/material/Toolbar";
 import { Link } from "react-router-dom";
 import Logout from '@mui/icons-material/Logout';
 import HomeIcon from '@mui/icons-material/Home';
+import InfoIcon from '@mui/icons-material/Info';
 import MenuIcon from '@mui/icons-material/Menu';
 import { AccountContext } from '../../context/accountContext'
 import GoogleLogin from '../googleLogin'
 import Index from '../index'
 
-import './style.sass'
+import './style.css'
 
 
 export default function Topbar(){
 
     const [drawerView, setDrawerView] = useState(false);
-    const openDrawer = () => {
-        setDrawerView(true)
+    const toggleDrawer = () => {
+        setDrawerView((val) => !val)
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -31,21 +32,19 @@ export default function Topbar(){
             <AppBar position="fixed" style={{zIndex: 1400, backgroundColor: "buttonface",  }}  >
                 <span style={{justifyContent: "space-between", alignItems: "center", display: "flex"}}>
                     <span style={{padding:"1rem"}}>
-                        <button onClick={openDrawer}>
-                            <MenuIcon >
-                                Index
-                            </MenuIcon>
+                        <button className="topbar-button" onClick={toggleDrawer}>
+                            <MenuIcon />
                         </button>
                                
                     </span>
                     <span style={{justifyContent: "space-between", alignItems: "center", display: "flex"}}>
                         <span style={{ marginRight: "1rem"}}>
                             <Link to="/">
-                                <button> <HomeIcon /> Home </button>
+                                <button className="topbar-button"> <HomeIcon /> <h2>Home </h2> </button>
                             </Link>   
                         </span>
                         <span style={{ marginRight: "1rem"}}>
-                            <Link to="/about">About me</Link>
+                            <Link to="/about"> <button className="topbar-button">  <InfoIcon /> <h2>About me  </h2> </button></Link>
                         </span>
                         <span style={{ marginRight: "1rem"}}>
 

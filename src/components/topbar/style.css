@@ -1,0 +1,19 @@
+.topbar-button {
+
+    display: flex;
+    border-radius: 1rem;
+    border: none;
+    align-items: center;
+    font-family: serif;
+
+
+}
+
+.topbar-button:hover {
+    background-color: azure;
+    border-radius: 1rem;
+    
+    
+
+    
+}
