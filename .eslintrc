@@ -1,4 +1,11 @@
 {
+    "settings": {
+      "import/resolver":{
+        "node":{
+          "paths": ["src"]
+        }
+      }
+    },
     "root": true,
     "parser": "@typescript-eslint/parser",
     "plugins": [
