@@ -1,3 +1,14 @@
+
+
+.topbar-flex-container {
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center; 
+    display: flex;
+
+}
+
+
 .topbar-button {
 
     display: flex;
@@ -13,7 +24,7 @@
     background-color: azure;
     border-radius: 1rem;
     
-    
-
-    
+       
 }
+
+

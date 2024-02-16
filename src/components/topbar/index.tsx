@@ -2,13 +2,13 @@ import { useContext, useState } from 'react'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from "@mui/material/Toolbar";
 import { Link } from "react-router-dom";
-import Logout from '@mui/icons-material/Logout';
 import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
 import MenuIcon from '@mui/icons-material/Menu';
-import { AccountContext } from '../../context/accountContext'
-import GoogleLogin from '../googleLogin'
-import Index from '../index'
+import Profile from 'components/profile';
+import { AccountContext } from 'context/accountContext'
+import GoogleLogin from 'components/googleLogin'
+import Index from 'components/index'
 
 import './style.css'
 
@@ -22,35 +22,31 @@ export default function Topbar(){
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { tokenExists, logout } = useContext(AccountContext)
-    
-    const onClick = () => {
-        logout()
-    }   
 
     return (
         <>
             <AppBar position="fixed" style={{zIndex: 1400, backgroundColor: "buttonface",  }}  >
-                <span style={{justifyContent: "space-between", alignItems: "center", display: "flex"}}>
+                <span className='topbar-flex-container'>
                     <span style={{padding:"1rem"}}>
                         <button className="topbar-button" onClick={toggleDrawer}>
                             <MenuIcon />
                         </button>
                                
                     </span>
-                    <span style={{justifyContent: "space-between", alignItems: "center", display: "flex"}}>
-                        <span style={{ marginRight: "1rem"}}>
+                    <span className='topbar-flex-container'>
+                        <span>
                             <Link to="/">
                                 <button className="topbar-button"> <HomeIcon /> <h2>Home </h2> </button>
                             </Link>   
                         </span>
-                        <span style={{ marginRight: "1rem"}}>
+                        <span>
                             <Link to="/about"> <button className="topbar-button">  <InfoIcon /> <h2>About me  </h2> </button></Link>
                         </span>
-                        <span style={{ marginRight: "1rem"}}>
+                        <span className='topbar-flex-container' style={{gap: 0}}>
 
                             {
                             tokenExists
-                                ? <button onClick={onClick} > <Logout /></button>
+                                ? <Profile className="topbar-button" />
                                 : <GoogleLogin />   
                             }
                         </span>
