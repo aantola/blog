@@ -3,6 +3,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import { Link } from "react-router-dom";
 import DynamicIcon, {IconNames} from '../dynamicIcon';
 
 
@@ -10,32 +11,25 @@ export default function IndexList(){
     
     const lista = [
         {
-            text: "CTF",
+            text: "Tareas",
             icon: "Interests",
+            url: "/tasks"
 
-        },
-        {
-            text: "First blog",
-            icon: "Interests",
-
-        },
-        {
-            text: "VJW0RM malware analysis",
-            icon: "Interests",
         }
-
     ]
     
     return (
         <List>
-            {lista.map((e) => {
+            {lista.map((e, i) => {
                 return (
-                    <ListItem disablePadding>
+                    <ListItem id={"item" + i} disablePadding>
                         <ListItemButton>
-                            <ListItemIcon>
-                                <DynamicIcon iconName={e.icon as IconNames} />
-                            </ListItemIcon>
-                            <ListItemText primary={e.text} />
+                            <Link to={e.url}>
+                                <ListItemIcon>
+                                    <DynamicIcon iconName={e.icon as IconNames} />
+                                </ListItemIcon>
+                                <ListItemText primary={e.text} />
+                            </Link>
                         </ListItemButton>
                     </ListItem>
                 )

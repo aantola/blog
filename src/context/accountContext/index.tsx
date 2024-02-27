@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import  React, { createContext, useState } from 'react';
 
-
+import { useSnackbar } from 'notistack';
 
 interface AccountProviderProps {
 	children: React.ReactNode;
@@ -36,7 +36,7 @@ const AccountProvider : React.FC<AccountProviderProps> = ({children}) => {
     const [tokenExists,setTokenExists] = useState(localStorage.getItem('token') != null) 
     const [userData, setUserData] = useState(localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData') || '')[0] : null);
 
-    console.log("userData",userData);
+    const { enqueueSnackbar } = useSnackbar();
 
     const login = async (token : string) => {
         // Request for verification backend
@@ -59,12 +59,13 @@ const AccountProvider : React.FC<AccountProviderProps> = ({children}) => {
                 // using localstorage to save token is not the best option, but for now it will do
                 // there isn't any sensible user info
                 localStorage.setItem('token', token);
+                enqueueSnackbar("Login succesfull", {variant: "success"});
             })  
 
         
         
         }).catch((e : Error) => {
-            console.error("Authentification error: " + e.message)
+            enqueueSnackbar("Login failed: " + e.message, {variant: "error"})
         })
         
         

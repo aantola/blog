@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter,  Routes, Route } from 'react-router-dom';
+import { SnackbarProvider } from 'notistack';
 // import Card from '@mui/material/Card';
 import AccountProvider from 'context/accountContext'
 import About from 'routes/aboutme';
@@ -10,19 +11,21 @@ import './App.css';
 
 function App() {
   return (
-    <BrowserRouter> 
-      <AccountProvider>    
-        <Topbar />
-        <div className='mainContainer'> 
-          <Routes>
-            <Route path='/' element={<> Blog goes here </>} />
-            <Route path='/about' element={<About/>}/>
-            <Route path='/blog' element={<BlogPost />} />
-            <Route path='/tasks' element={<Tasks />} />
-          </Routes>
-        </div>
-      </AccountProvider>
-    </BrowserRouter>
+    <SnackbarProvider maxSnack={3} >    
+      <BrowserRouter> 
+        <AccountProvider>    
+          <Topbar />
+          <div className='mainContainer'> 
+            <Routes>
+              <Route path='/' element={<> Blog goes here </>} />
+              <Route path='/about' element={<About/>}/>
+              <Route path='/blog' element={<BlogPost />} />
+              <Route path='/tasks' element={<Tasks />} />
+            </Routes>
+          </div>
+        </AccountProvider>
+      </BrowserRouter>
+    </SnackbarProvider>
     
   );
 }
