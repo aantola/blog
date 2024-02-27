@@ -1,9 +1,13 @@
 
 import { useState, useContext } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
+
+
 import Task from 'components/task';
-import { AccountContext } from 'context/accountContext'
+import { AccountContext } from 'context/accountContext';
+import useTasks, { TaskType } from 'hooks/useTasks'; 
 
-
+/*
 const dummyTasks = [
     {
         title: "Tarea 1",
@@ -26,10 +30,13 @@ const dummyTasks = [
         details: "lore ipsum",
     },
 ] 
-
+*/
 
 function Tasks(){
 
+
+    const {tasks, loading, error} = useTasks();
+    console.log("tasks", tasks);
     const { tokenExists }= useContext(AccountContext); 
 
     const [expanded, setExpanded] = useState<number | false>(false);
@@ -38,21 +45,41 @@ function Tasks(){
       setExpanded(newExpanded ? panel : false);
     };
 
+    if(error){
+        console.error(error);
+        return <> An error has occurred please reload</>;
+    }
+
+    if(loading){
+        return <div style={{margin: "auto"}}> <CircularProgress /> </div>
+    }
+
     return (
-        <div style={{width:"100%"}}>
-            {!tokenExists && <h2> Conectese a su cuenta para acceder a las tareas </h2>}
-            {dummyTasks.map((t : {details: string, title: string, icon?: React.ReactElement}, i: number) => {
-                return (
-                    <Task 
-                        id={i} 
-                        title={t.title} 
-                        details={t.details}
-                        expanded={expanded}
-                        handleChange={handleChange}
-                    />
-                )
-            })}
-        </div>
+        <>
+            
+
+            <div style={{width:"100%"}}>
+                {!tokenExists && <h2> Conectese a su cuenta para acceder a las tareas </h2>}
+                {tasks.map((t : TaskType, i: number) => {
+                    return (
+                        <Task 
+                            key={i}
+                            id={t.id} 
+                            title={t.title} 
+                            details={t.details}
+                            expanded={expanded}
+                            handleChange={handleChange}
+                            score={t.score}
+                            icon={t.icon}
+                            solved={t.solved}
+                            
+                        />
+                    )
+                })}
+            </div>
+        
+        </>
+        
     )
 }
 
