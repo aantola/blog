@@ -59,7 +59,7 @@ function Tasks(){
             
 
             <div style={{width:"100%"}}>
-                {!tokenExists && <h2> Conectese a su cuenta para acceder a las tareas </h2>}
+                {!tokenExists && <h2> Please login to access the avaiable tasks </h2>}
                 {tasks.map((t : TaskType, i: number) => {
                     return (
                         <Task 

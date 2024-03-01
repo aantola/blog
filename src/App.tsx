@@ -17,7 +17,12 @@ function App() {
           <Topbar />
           <div className='mainContainer'> 
             <Routes>
-              <Route path='/' element={<> Blog goes here </>} />
+              <Route path='/' element={
+                <> 
+                  Welcome to my small website. Here i will be uploading some cibersecurity blogs and some cibersecurity ctf like excersices, some based in my own malware investigations.
+                  You can check some of this tasks on the top left corner of the site. In order to access the task you will need to login using a google account.
+                </>} 
+              />
               <Route path='/about' element={<About/>}/>
               <Route path='/blog' element={<BlogPost />} />
               <Route path='/tasks' element={<Tasks />} />

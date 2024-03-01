@@ -34,7 +34,7 @@ function Task({title, details, icon, expanded,handleChange, id, score, solved} :
                 
             <h2 style={{display: "flex", alignItems: "center"}}> 
                 <DynamicmuiIcon iconName={icon as IconNames} /> 
-                {title} 
+                {title} ({score} Points)
             </h2> 
             </AccordionSummary>
             <AccordionDetails>

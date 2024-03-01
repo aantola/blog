@@ -12,7 +12,6 @@ export default function Login(){
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     function handleCredentialResponse(response : any) {
         
-        console.log("Encoded JWT ID token: " + response.credential);
         login(response.credential)
     }
 

@@ -11,7 +11,7 @@ export default function IndexList(){
     
     const lista = [
         {
-            text: "Tareas",
+            text: "TASKS",
             icon: "Interests",
             url: "/tasks"
 
@@ -22,16 +22,18 @@ export default function IndexList(){
         <List>
             {lista.map((e, i) => {
                 return (
-                    <ListItem id={"item" + i} disablePadding>
-                        <ListItemButton>
-                            <Link to={e.url}>
+                    <Link to={e.url}>
+                        <ListItem id={"item" + i} disablePadding>
+                            <ListItemButton>
+                                
                                 <ListItemIcon>
                                     <DynamicIcon iconName={e.icon as IconNames} />
                                 </ListItemIcon>
                                 <ListItemText primary={e.text} />
-                            </Link>
-                        </ListItemButton>
-                    </ListItem>
+                                
+                            </ListItemButton>
+                        </ListItem>
+                    </Link>
                 )
             })}
         </List>   

@@ -1,5 +1,8 @@
 import { useState, useContext } from 'react';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
+
 import { AccountContext } from 'context/accountContext';
 import { useSnackbar } from 'notistack';
 
@@ -48,7 +51,7 @@ function taskSolution({id} : {id: number}){
     }
 
     return (
-        <>
+        <div style={{display:"flex", alignItems:"end"}}>
         
             <TextField 
                 style={{width: "100%"}}
@@ -57,8 +60,10 @@ function taskSolution({id} : {id: number}){
                 value={text}
                 onChange={ChangeText}
             />
-            <button onClick={checkAnswer}> Enviar </button>
-        </>
+            <Button onClick={checkAnswer} variant="contained" endIcon={<SendIcon />}>
+                Submit
+            </Button>
+        </div>
     )
 
 }  
