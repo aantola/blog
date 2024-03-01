@@ -1,0 +1,13 @@
+.icons-list img{
+    height: 3rem;
+}
+
+.icons-list{
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    align-content: space-between;
+    justify-content: center;
+    
+}
